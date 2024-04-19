@@ -128,7 +128,7 @@ const WeatherApp = () => {
                 <img src={weatherIcon} alt="Weather Icon"></img>
             </div>
             <div className="description">{weatherData && weatherData.weather[0].description}</div>
-            <div className="weather-temp">{Math.floor(weatherData && isKelvin(weatherData.main.temp) ? kelvinToCelsius(weatherData.main.temp):weatherData.main.temp)}°c</div>
+            <div className="weather-temp">{weatherData && Math.floor(weatherData && isKelvin(weatherData.main.temp) ? kelvinToCelsius(weatherData.main.temp):weatherData.main.temp)}°c</div>
             <div className="weather-location">{weatherData && weatherData.name}</div>
             <div className="data-container">
                 <div className="details">
