@@ -104,7 +104,17 @@ const WeatherApp = () => {
         } catch (error) {
             console.error('Error fetching weather data:', error);
         }
+
     };
+
+    function kelvinToCelsius(tempKelvin) {
+        return tempKelvin - 273.15;
+    }
+
+    // Function to check if temperature is in Kelvin
+    function isKelvin(temp) {
+        return temp >= 100; // Assuming temperatures below 100 are not in Kelvin
+    }
 
     return (
         <div className="container">
@@ -118,7 +128,7 @@ const WeatherApp = () => {
                 <img src={weatherIcon} alt="Weather Icon"></img>
             </div>
             <div className="description">{weatherData && weatherData.weather[0].description}</div>
-            <div className="weather-temp">{Math.floor(weatherData && weatherData.main.temp)}°c</div>
+            <div className="weather-temp">{Math.floor(weatherData && isKelvin(weatherData.main.temp) ? kelvinToCelsius(weatherData.main.temp):weatherData.main.temp)}°c</div>
             <div className="weather-location">{weatherData && weatherData.name}</div>
             <div className="data-container">
                 <div className="details">
